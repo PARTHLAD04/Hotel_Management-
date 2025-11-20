@@ -2,6 +2,7 @@ const express = require('express');
 const Person = require('../models/Person');
 const router = express.Router();
 
+// Create Person
 router.post('/', async (req, res) => {
     try {
         const data = req.body;
@@ -15,6 +16,8 @@ router.post('/', async (req, res) => {
     }
 });
 
+
+// Read Person
 router.get('/', async (req, res) => {
     try {
         const persons = await Person.find();
@@ -42,6 +45,7 @@ router.get('/:worktype', async (req, res) => {
     }
 });
 
+// Updated Person
 router.put('/:id', async (req, res) => {
     try {
         const personId = req.params.id;
@@ -59,6 +63,8 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+
+// delete Person
 router.delete('/:id', async (req, res) => {
     try {
         const personId = req.params.id; 
