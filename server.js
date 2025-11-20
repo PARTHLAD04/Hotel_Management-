@@ -4,8 +4,9 @@ const bodyParser = require('body-parser');
 const Menu = require('./models/Menu')
 const personRouter = require('./routers/personRouter')
 const menuRouter = require('./routers/menuRouter')
+require('dotenv').config();
 
-const port = 3000
+const port = process.env.PORT || 3000;
 const app = express()
 
 app.use(bodyParser.json());
