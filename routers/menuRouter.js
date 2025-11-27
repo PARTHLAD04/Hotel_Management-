@@ -1,6 +1,5 @@
 const express = require('express');
 const Menu = require('../models/Menu');
-const { route } = require('./personRouter');
 const router = express.Router();
 
 router.post('/', async (req, res) => {

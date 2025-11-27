@@ -1,7 +1,7 @@
 const express = require('express')
-const db = require('./db')
 const bodyParser = require('body-parser');
-const Menu = require('./models/Menu')
+const passport = require('./auth');
+const db = require('./db');
 const personRouter = require('./routers/personRouter')
 const menuRouter = require('./routers/menuRouter')
 require('dotenv').config();
@@ -9,13 +9,28 @@ require('dotenv').config();
 const port = process.env.PORT || 3000;
 const app = express()
 
-app.use(bodyParser.json());
-app.use('/person',personRouter );
-app.use('/menu', menuRouter);
+// Logger Middleware
+const logger = (req, res, next) => {
+  console.log(`${req.method} ${req.url} - ${new Date().toISOString()}`);
+  next();
+}
+app.use(logger);
 
-app.get('/', (req, res) => {
+app.use(passport.initialize());
+app.use(bodyParser.json());
+
+const localAuth = passport.authenticate('local', { session: false });
+
+// Home Route
+app.get('/',(req, res) => {
   res.send('Welcome to the Hotel ')
 })
+//person Router
+app.use('/person',localAuth, personRouter);
+
+//menu Router
+app.use('/menu', menuRouter);
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
