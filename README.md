@@ -347,14 +347,6 @@ The application includes a custom logger that logs all requests:
 ### Error Handling
 All routes include try-catch blocks with appropriate error responses and console logging.
 
-## 📄 License
-
-ISC
-
-## 👤 Author
-
-*Your Name Here*
-
 ---
 
 **Note**: This is a backend API project. For production deployment, ensure to:
