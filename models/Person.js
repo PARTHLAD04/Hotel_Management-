@@ -16,8 +16,7 @@ const personSchema = new mongoose.Schema({
     },
     mobile: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     email: {
         type: String,

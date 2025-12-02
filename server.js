@@ -26,7 +26,7 @@ app.get('/',(req, res) => {
   res.send('Welcome to the Hotel ')
 })
 //person Router
-app.use('/person',localAuth, personRouter);
+app.use('/person', personRouter);
 
 //menu Router
 app.use('/menu', menuRouter);
